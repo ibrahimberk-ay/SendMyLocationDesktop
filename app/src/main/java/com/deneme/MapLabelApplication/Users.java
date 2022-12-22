@@ -16,16 +16,20 @@ public class Users {
     private double latitude;//Enlem
     private double longitude;//Boylam
     private String dateTime;
+    private int priority;
+    private String condition;
     
     //Parametresiz Consturctor
     public Users(){}
     //Parametreli Consturctor
-    public Users(String userId, String userName, double latitude, double longitude,String dateTime){
+    public Users(String userId, String userName, double latitude, double longitude,String dateTime,int priority,String condition){
         this.userId = userId;
         this.userName = userName;
         this.latitude = latitude;
         this.longitude = longitude;
         this.dateTime = dateTime;
+        this.priority = priority;
+        this.condition = condition;
     }
     
     
@@ -68,5 +72,21 @@ public class Users {
 
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
+    }
+    
+    public int getPriority() {
+        return priority;
+    }
+    
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+    
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 }

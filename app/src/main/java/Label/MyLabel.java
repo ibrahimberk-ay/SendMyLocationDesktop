@@ -24,19 +24,23 @@ public class MyLabel extends DefaultWaypoint{
     //Etiketin çaðýracaðý buton
     private JButton button;
     
+    //Öncelik seviyesi
+    private int priority;
+    
     //Constructor with no parameters
     public MyLabel(){
         
     }
     //Constructor with parameters
-    public MyLabel(String name, EventWaypoint event, GeoPosition coord) {
+    public MyLabel(String name, EventWaypoint event, GeoPosition coord, int priority) {
         super(coord);
         this.name = name;
+        this.priority = priority;
         initButton(event);
     }
     
     private void initButton(EventWaypoint event){
-        button = new LabelButton();
+        button = new LabelButton(priority);
         button.addActionListener((ActionEvent e) -> {
             event.selected(MyLabel.this);
             System.out.println(name);
@@ -60,6 +64,12 @@ public class MyLabel extends DefaultWaypoint{
         this.button = button;
     }
     
+    public int getPriority(){
+        return priority;
+    }
+    public void setPriority(int priority){
+        this.priority = priority;
+    }
     
     
     

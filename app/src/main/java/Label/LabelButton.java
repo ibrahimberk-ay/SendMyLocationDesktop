@@ -16,9 +16,18 @@ import javax.swing.JButton;
 //Etiket özelliklerinin tanýmlandýðý sýnýf
 public class LabelButton extends JButton{
     
-    public LabelButton(){
+    
+    public LabelButton(int priority){
         setContentAreaFilled(false);   
-        setIcon(new ImageIcon("C:\\Users\\Berk\\Desktop\\MapApplicationExamples\\MapLabelApplication\\app\\src\\main\\java\\com\\deneme\\icon\\pin1.png"));
+        if(priority == 0){
+            setIcon(new ImageIcon("C:\\Users\\Berk\\Desktop\\MapApplicationExamples\\MapLabelApplication\\app\\src\\main\\java\\com\\deneme\\icon\\pin0.png"));
+        }
+        if(priority == 1){
+            setIcon(new ImageIcon("C:\\Users\\Berk\\Desktop\\MapApplicationExamples\\MapLabelApplication\\app\\src\\main\\java\\com\\deneme\\icon\\pin1.png"));
+        }
+        if(priority == 2){
+            setIcon(new ImageIcon("C:\\Users\\Berk\\Desktop\\MapApplicationExamples\\MapLabelApplication\\app\\src\\main\\java\\com\\deneme\\icon\\pin2.png"));
+        }
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setSize(new Dimension(24,24));
               

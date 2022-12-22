@@ -147,8 +147,9 @@ public class MapFrame extends javax.swing.JFrame {
                         "User Name: " + user.getUserName()+ "\n" +
                         "Latitude: " + user.getLatitude() + "\n" +
                         "Longitude: " + user.getLongitude() + "\n" +
-                        "Date & Time: " + user.getDateTime();
-                labels.add(new MyLabel(clickString, event, new GeoPosition(user.getLatitude(), user.getLongitude())));
+                        "Date & Time: " + user.getDateTime() + "\n" +
+                        "Condition: " + user.getCondition();
+                labels.add(new MyLabel(clickString, event, new GeoPosition(user.getLatitude(), user.getLongitude()),user.getPriority()));
             }
             //Kullanýcý listesini her seferinde 0'lýyorum ki her çaðýrýldýðýnda ayný kullanýcýdan defalarca çaðýrýlmasýn ve bellek kullanýmý artmasýn
             users.clear();
@@ -182,7 +183,9 @@ public class MapFrame extends javax.swing.JFrame {
                         document.getString("userName"),
                         document.getDouble("latitude"),
                         document.getDouble("longitude"),
-                        document.getString("dateTime"))
+                        document.getString("dateTime"),
+                        document.getDouble("priority").intValue(),
+                        document.getString("condition"))
                 );
             }
         } catch (InterruptedException | ExecutionException ex) {
