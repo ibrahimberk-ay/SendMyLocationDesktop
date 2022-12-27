@@ -202,16 +202,22 @@ public class MapFrame extends javax.swing.JFrame {
 
     }
 
+    //Bilgisayarýn mevcut tarihini alýp gelen kullanýcýnýn verisiyle kýyaslayacak olan fonksiyon
     private boolean checkDate(QueryDocumentSnapshot document) {
+        //Bilgisayarýn tarih bilsini alýyorum ve formatlýyorum
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
         int index = dateTime.indexOf(" ");
         dateTime = dateTime.substring(0, index);
+        //Kullanýcýnýn tarih bilgisini alýp formatlýyorum
         String documentDateTime = document.getString("dateTime").substring(0, index);
         try {  
+            //Ýki tarihi de karþýlaþtýrma yapacak fonksiyona göre tekrar formatlýyorum
             Date localDate = new SimpleDateFormat("yyyy/MM/dd").parse(dateTime);
-            Date documentDate = new SimpleDateFormat("yyyy/MM/dd").parse(documentDateTime);           
+            Date documentDate = new SimpleDateFormat("yyyy/MM/dd").parse(documentDateTime);      
+            //iki tarih birbirine denk ise fonksiyon 0 deðeri gönderiyor ve ana fonksiyon çýkýþý true dönüyor.
+            //Buna göre eðer konumlar ayný gün gönderilmiþse haritada iþaretlenmesini saðlýyor.
             if(localDate.compareTo(documentDate) == 0){
                 return true;
             }
